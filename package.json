@@ -1,0 +1,24 @@
+{
+  "name": "wiringPi",
+  "version": "0.1.0",
+  "description": "Bindings to wiringPi",
+  "main": "lib/exports.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "./build.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/Users/Soarez/src/soarez/node-wiring-pi.git"
+  },
+  "keywords": [
+    "wiringPi",
+    "gpio",
+    "raspberry",
+    "pi",
+    "raspberrypi",
+    "bcm2835"
+  ],
+  "author": "Igor Soarez <igorsoarez@gmail.com>",
+  "license": "BSD"
+}
