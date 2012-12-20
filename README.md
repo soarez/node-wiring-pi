@@ -1,1 +1,1 @@
-Bindings to wiringPi
+Node.js bindings to [wiringPi](https://projects.drogon.net/raspberry-pi/wiringpi/)
