@@ -10,7 +10,7 @@ using namespace v8;
 #define IMPLEMENT(name) \
   Handle<Value> wpi::name(const Arguments& args)
 #define EXPORT(name)  \
-  target->Set(String::NewSymbol("name"), \
+  target->Set(String::NewSymbol(#name), \
   FunctionTemplate::New(wpi::name)->GetFunction())
 
 namespace wpi {
@@ -29,14 +29,13 @@ IMPLEMENT(wiringPiSetup) {
     return scope.Close(Undefined());
   }
 
-  res = ::wiringPiSetup()
+  res = ::wiringPiSetup();
 
   return scope.Close(Int32::New(res));
 }
 
 IMPLEMENT(pinMode) {
   HandleScope scope;
-  int res;
 
   if (args.Length() != 2) {
     ThrowException(Exception::TypeError(
@@ -50,14 +49,13 @@ IMPLEMENT(pinMode) {
     return scope.Close(Undefined());
   }
 
-  res = ::pinMode(args[0]->NumberValue(), args[1]->NumberValue());
+  ::pinMode(args[0]->NumberValue(), args[1]->NumberValue());
 
-  return scope.Close(Int32::New(res));
+  return scope.Close(Undefined());
 }
 
 IMPLEMENT(digitalWrite) {
   HandleScope scope;
-  int res;
 
   if (args.Length() != 2) {
     ThrowException(Exception::TypeError(
@@ -71,9 +69,9 @@ IMPLEMENT(digitalWrite) {
     return scope.Close(Undefined());
   }
 
-  res = ::digitalWrite(args[0]->NumberValue(), args[1]->NumberValue());
+  ::digitalWrite(args[0]->NumberValue(), args[1]->NumberValue());
 
-  return scope.Close(Int32::New(res));
+  return scope.Close(Undefined());
 }
 
 void init(Handle<Object> target) {
