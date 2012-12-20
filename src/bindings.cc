@@ -15,8 +15,15 @@ using namespace v8;
 
 namespace wpi {
   DECLARE(wiringPiSetup);
+  DECLARE(wiringPiSetupGpio);
+  DECLARE(wiringPiSetupSys);
+  DECLARE(piBoardRev);
   DECLARE(pinMode);
   DECLARE(digitalWrite);
+  DECLARE(digitalRead)
+  DECLARE(pwmSetRange);
+  DECLARE(pwmSetClock);
+  DECLARE(pwmWrite);
 }
 
 IMPLEMENT(wiringPiSetup) {
@@ -30,6 +37,51 @@ IMPLEMENT(wiringPiSetup) {
   }
 
   res = ::wiringPiSetup();
+
+  return scope.Close(Int32::New(res));
+}
+
+IMPLEMENT(wiringPiSetupGpio) {
+  HandleScope scope;
+  int res;
+
+  if (args.Length() != 0) {
+    ThrowException(Exception::TypeError(
+      String::New("Wrong number of arguments.")));
+    return scope.Close(Undefined());
+  }
+
+  res = ::wiringPiSetupGpio();
+
+  return scope.Close(Int32::New(res));
+}
+
+IMPLEMENT(wiringPiSetupSys) {
+  HandleScope scope;
+  int res;
+
+  if (args.Length() != 0) {
+    ThrowException(Exception::TypeError(
+      String::New("Wrong number of arguments.")));
+    return scope.Close(Undefined());
+  }
+
+  res = ::wiringPiSetupSys();
+
+  return scope.Close(Int32::New(res));
+}
+
+IMPLEMENT(piBoardRev) {
+  HandleScope scope;
+  int res;
+
+  if (args.Length() != 0) {
+    ThrowException(Exception::TypeError(
+      String::New("Wrong number of arguments.")));
+    return scope.Close(Undefined());
+  }
+
+  res = ::piBoardRev();
 
   return scope.Close(Int32::New(res));
 }
@@ -74,9 +126,97 @@ IMPLEMENT(digitalWrite) {
   return scope.Close(Undefined());
 }
 
+IMPLEMENT(digitalRead) {
+  HandleScope scope;
+  int res;
+
+  if (args.Length() != 1) {
+    ThrowException(Exception::TypeError(
+      String::New("Wrong number of arguments.")));
+    return scope.Close(Undefined());
+  }
+
+  if (!args[0]->IsNumber()) {
+    ThrowException(Exception::TypeError(
+      String::New("Incorrect argument type. Number expected.")));
+    return scope.Close(Undefined());
+  }
+
+  res = ::digitalRead();
+
+  return scope.Close(Int32::New(res));
+}
+
+IMPLEMENT(pwmSetRange) {
+  HandleScope scope;
+
+  if (args.Length() != 1) {
+    ThrowException(Exception::TypeError(
+      String::New("Wrong number of arguments.")));
+    return scope.Close(Undefined());
+  }
+
+  if (!args[0]->IsNumber()) {
+    ThrowException(Exception::TypeError(
+      String::New("Incorrect argument type. Number expected.")));
+    return scope.Close(Undefined());
+  }
+
+  ::pwmSetRange(args[0]->Uint32Value());
+
+  return scope.Close(Undefined());
+}
+
+IMPLEMENT(pwmSetClock) {
+  HandleScope scope;
+
+  if (args.Length() != 1) {
+    ThrowException(Exception::TypeError(
+      String::New("Wrong number of arguments.")));
+    return scope.Close(Undefined());
+  }
+
+  if (!args[0]->IsNumber()) {
+    ThrowException(Exception::TypeError(
+      String::New("Incorrect argument type. Number expected.")));
+    return scope.Close(Undefined());
+  }
+
+  ::pwmSetClock(args[0]->NumberValue());
+
+  return scope.Close(Undefined());
+}
+
+IMPLEMENT(pwmWrite) {
+  HandleScope scope;
+
+  if (args.Length() != 2) {
+    ThrowException(Exception::TypeError(
+      String::New("Wrong number of arguments.")));
+    return scope.Close(Undefined());
+  }
+
+  if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
+    ThrowException(Exception::TypeError(
+      String::New("Incorrect argument types. Numbers expected.")));
+    return scope.Close(Undefined());
+  }
+
+  ::pwmWrite(args[0]->NumberValue(), args[1]->NumberValue());
+
+  return scope.Close(Undefined());
+}
+
 void init(Handle<Object> target) {
   EXPORT(wiringPiSetup);
+  EXPORT(wiringPiSetupGpio);
+  EXPORT(wiringPiSetupSys);
+  EXPORT(piBoardRev);
   EXPORT(pinMode);
   EXPORT(digitalWrite);
+  EXPORT(digitalRead);
+  EXPORT(pwmSetRange);
+  EXPORT(pwmSetClock);
+  EXPORT(pwmWrite);
 }
 NODE_MODULE(wiringPi, init)
