@@ -20,7 +20,7 @@ namespace wpi {
   DECLARE(piBoardRev);
   DECLARE(pinMode);
   DECLARE(digitalWrite);
-  DECLARE(digitalRead)
+  DECLARE(digitalRead);
   DECLARE(pwmSetRange);
   DECLARE(pwmSetClock);
   DECLARE(pwmWrite);
@@ -142,7 +142,7 @@ IMPLEMENT(digitalRead) {
     return scope.Close(Undefined());
   }
 
-  res = ::digitalRead();
+  res = ::digitalRead(args[0]->NumberValue());
 
   return scope.Close(Int32::New(res));
 }
