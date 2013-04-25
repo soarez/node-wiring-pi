@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "/Users/Soarez/src/soarez/node-wiring-pi.git"
+    "url": "git@github.com:nharbour/wiringPi.git"
   },
   "keywords": [
     "wiringPi",
