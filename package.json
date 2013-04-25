@@ -1,5 +1,5 @@
 {
-  "name": "wiringPi",
+  "name": "wiring-pi",
   "version": "0.1.0",
   "description": "Bindings to wiringPi",
   "main": "lib/exports.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:nharbour/wiringPi.git"
+    "url": "git@github.com:nharbour/wiring-pi.git"
   },
   "keywords": [
     "wiringPi",
