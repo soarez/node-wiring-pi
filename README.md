@@ -14,6 +14,14 @@ var wpi = require('wiring-pi');
 
 ### `wpi.setup([mode])`
 
+```javascript
+wpi.setup();
+```
+
+```javascript
+wpi.setup('gpio');
+```
+
 Valid Modes:
 
 - `wpi`: sets up pin numbering with `wiringPiSetup`
@@ -24,15 +32,32 @@ See [wiringPi Pins](http://wiringpi.com/pins/) for the differences in Pin number
 
 ### `wpi.pinMode(pin, mode)`
 
+```javascript
+wpi.pinMode(0, wpi.modes.OUTPUT);
+```
+
 - `pin`: pin number
-- `mode`: `wpi.INPUT`, `wpi.OUTPUT`, or `wpi.PWM_OUTPUT`
+- `mode`: `wpi.modes.INPUT`, `wpi.modes.OUTPUT`, or `wpi.modes.PWM_OUTPUT`
 
 ### `wpi.digitalWrite(pin, value)`
 
+```javascript
+wpi.digitalWrite(0, wpi.HIGH);
+```
+
+```javascript
+wpi.digitalWrite(0, wpi.LOW);
+```
+
 - `pin`: pin number
-- `value`: 0 or 1
+- `value`: 0 (`wpi.LOW`) or 1 (`wpi.HIGH`)
 
 ### `wpi.digitalRead(pin)`
+
+```javascript
+wpi.digitalRead(0);
+//=> 1
+```
 
 - `pin`: pin number
 
