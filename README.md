@@ -1,4 +1,4 @@
-Node.js bindings to [wiringPi](https://projects.drogon.net/raspberry-pi/wiringpi/)
+Node.js bindings to [WiringPi](http://wiringpi.com/)
 
 ## Install
 
@@ -28,7 +28,7 @@ Valid Modes:
 - `gpio`: sets up pin numbers with `wiringPiSetupGpio`
 - `sys`: sets up pin numbers with `wiringPiSetupSys`
 
-See [wiringPi Pins](http://wiringpi.com/pins/) for the differences in Pin numbering;
+See [WiringPi Pins](http://wiringpi.com/pins/) for the differences in Pin numbering;
 
 ### `wpi.pinMode(pin, mode)`
 
