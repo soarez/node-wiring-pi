@@ -1,3 +1,9 @@
+# UPDATE
+
+Project now lives here:  [eugeneware/wiring-pi](https://github.com/eugeneware/wiring-pi).
+
+---------------
+
 Node.js bindings to [WiringPi](http://wiringpi.com/)
 
 ## Install
