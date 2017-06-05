@@ -1,6 +1,6 @@
 # UPDATE
 
-Project now lives here:  [eugeneware/wiring-pi](https://github.com/eugeneware/wiring-pi).
+Project now lives here:  [WiringPi/WiringPi-Node](https://github.com/WiringPi/WiringPi-Node).
 
 ---------------
 
